@@ -2,6 +2,7 @@ package co.edu.unillanos.campusfest.infrastructure.ui;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import co.edu.unillanos.campusfest.application.usecase.EditarEvento;
 import co.edu.unillanos.campusfest.domain.Evento;
 import javafx.fxml.FXML;
@@ -46,6 +47,10 @@ public class PantallaEventoController {
             casoDeUso.editar(campoEventoId.getText().trim(), campoNombre.getText().trim(),
                     fecha, campoLugar.getText().trim(), aforo);
             etiquetaMensaje.setText("Evento actualizado correctamente");
+        } catch (DateTimeParseException error) {
+            etiquetaMensaje.setText("No se pudo editar: la fecha debe tener el formato aaaa-MM-dd HH:mm");
+        } catch (NumberFormatException error) {
+            etiquetaMensaje.setText("No se pudo editar: el aforo debe ser un número entero");
         } catch (RuntimeException error) {
             etiquetaMensaje.setText("No se pudo editar: " + error.getMessage());
         }
