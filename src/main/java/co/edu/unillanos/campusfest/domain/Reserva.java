@@ -6,6 +6,8 @@ import java.util.UUID;
 
 /** Experto en vigencia, estado, cupos e ingreso de una reserva. */
 public class Reserva {
+    private static final int MINUTOS_DE_VIGENCIA = 10;
+
     private final String codigo;
     private final String estudianteId;
     private final LocalDateTime venceEn;
@@ -27,7 +29,7 @@ public class Reserva {
         }
         Objects.requireNonNull(ahora, "La hora es obligatoria");
         return new Reserva(UUID.randomUUID().toString(), estudianteId,
-                ahora.plusMinutes(10), EstadoReserva.PENDIENTE, null);
+                ahora.plusMinutes(MINUTOS_DE_VIGENCIA), EstadoReserva.PENDIENTE, null);
     }
 
     /** Reconstitución desde almacenamiento: preserva fielmente el estado persistido. */
@@ -51,8 +53,9 @@ public class Reserva {
             throw new IllegalStateException("Solo una reserva pendiente puede confirmarse");
         }
         if (!ahora.isBefore(venceEn)) {
-            estado = EstadoReserva.VENCIDA;
-            throw new IllegalStateException("La reserva venció: el plazo de 10 minutos terminó");
+            // Rechazo sin efectos: el estado no cambia; ocupaCupo(ahora) ya libera el cupo.
+            throw new IllegalStateException("La reserva venció: el plazo de "
+                    + MINUTOS_DE_VIGENCIA + " minutos terminó");
         }
         estado = EstadoReserva.CONFIRMADA;
     }
