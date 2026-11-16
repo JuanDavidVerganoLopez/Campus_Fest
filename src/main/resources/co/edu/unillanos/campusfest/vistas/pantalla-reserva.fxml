@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="16" styleClass="contenido" fillWidth="true">
+    <children>
+        <Label text="Reservar y confirmar entrada" styleClass="titulo"/>
+        <Label text="Una solicitud pendiente conserva su cupo durante 10 minutos. Su código sirve para confirmar y registrar ingreso." wrapText="true" styleClass="explicacion"/>
+        <VBox spacing="6"><children>
+            <Label text="ID del evento" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoEventoId" text="ev-1"/>
+        </children></VBox>
+        <VBox spacing="6"><children>
+            <Label text="ID del estudiante" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoEstudianteId" promptText="Ejemplo: est-1001"/>
+        </children></VBox>
+        <Button text="1. Solicitar reserva" onAction="#solicitarReserva" styleClass="boton-principal"/>
+        <VBox spacing="6"><children>
+            <Label text="Código de reserva / QR" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoCodigoReserva" promptText="Se completa automáticamente al solicitar"/>
+        </children></VBox>
+        <Button text="2. Confirmar reserva" onAction="#confirmarReserva" styleClass="boton-secundario"/>
+        <Label fx:id="etiquetaMensaje" text="Ingresa los datos y solicita tu entrada." wrapText="true" styleClass="mensaje"/>
+    </children>
+</VBox>

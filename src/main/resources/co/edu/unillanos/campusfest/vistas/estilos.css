@@ -1,0 +1,90 @@
+/* Todas las declaraciones son propiedades -fx- compatibles con JavaFX. */
+.root {
+    -fx-font-family: "Segoe UI", "Inter", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f5f7fb;
+}
+.cabecera {
+    -fx-background-color: #17243e;
+    -fx-padding: 27 34 25 34;
+}
+.marca {
+    -fx-font-size: 25px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+.subtitulo {
+    -fx-font-size: 13px;
+    -fx-text-fill: #bdcce4;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #e8edf6;
+}
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-padding: 10 18 10 18;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: #ffffff;
+}
+.tab .tab-label {
+    -fx-text-fill: #344054;
+    -fx-font-weight: bold;
+}
+.contenido {
+    -fx-padding: 26 34 34 34;
+    -fx-max-width: 790;
+    -fx-background-color: #ffffff;
+}
+.titulo {
+    -fx-text-fill: #17243e;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+.explicacion {
+    -fx-text-fill: #5d6b81;
+    -fx-font-size: 13px;
+}
+.campo-etiqueta {
+    -fx-text-fill: #344054;
+    -fx-font-weight: bold;
+}
+.text-field {
+    -fx-background-color: #f8faff;
+    -fx-border-color: #cad5e6;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 12;
+}
+.text-field:focused {
+    -fx-border-color: #2865d6;
+    -fx-background-color: #ffffff;
+}
+.boton-principal {
+    -fx-background-color: #245bc4;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 7;
+    -fx-font-weight: bold;
+    -fx-padding: 11 19;
+    -fx-cursor: hand;
+}
+.boton-principal:hover {
+    -fx-background-color: #17479d;
+}
+.boton-secundario {
+    -fx-background-color: #dce7fc;
+    -fx-text-fill: #17479d;
+    -fx-background-radius: 7;
+    -fx-font-weight: bold;
+    -fx-padding: 11 19;
+    -fx-cursor: hand;
+}
+.mensaje {
+    -fx-background-color: #edf3fe;
+    -fx-border-color: #d3e0fb;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+    -fx-padding: 15;
+    -fx-text-fill: #1e365f;
+    -fx-font-weight: bold;
+}

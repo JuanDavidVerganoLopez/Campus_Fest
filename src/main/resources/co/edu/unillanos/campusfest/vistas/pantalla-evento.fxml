@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="11" styleClass="contenido" fillWidth="true">
+    <children>
+        <Label text="Editar información del evento" styleClass="titulo"/>
+        <Label text="Solo el organizador debe editar estos datos. No se puede reducir el aforo por debajo de los cupos ocupados y bloqueados." wrapText="true" styleClass="explicacion"/>
+        <VBox spacing="5"><children>
+            <Label text="ID del evento" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoEventoId" text="ev-1"/>
+        </children></VBox>
+        <Button text="Obtener datos del evento" onAction="#obtener" styleClass="boton-secundario"/>
+        <VBox spacing="5"><children>
+            <Label text="Nombre" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoNombre" promptText="Nombre del evento"/>
+        </children></VBox>
+        <HBox spacing="12"><children>
+            <VBox HBox.hgrow="ALWAYS" spacing="5"><children>
+                <Label text="Fecha (aaaa-MM-dd HH:mm)" styleClass="campo-etiqueta"/>
+                <TextField fx:id="campoFecha" promptText="2026-11-28 19:00"/>
+            </children></VBox>
+            <VBox HBox.hgrow="ALWAYS" spacing="5"><children>
+                <Label text="Aforo" styleClass="campo-etiqueta"/>
+                <TextField fx:id="campoAforo" promptText="120"/>
+            </children></VBox>
+        </children></HBox>
+        <VBox spacing="5"><children>
+            <Label text="Lugar" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoLugar" promptText="Auditorio"/>
+        </children></VBox>
+        <Button text="Guardar cambios" onAction="#editar" styleClass="boton-principal"/>
+        <Label fx:id="etiquetaMensaje" text="Busca primero un evento para cargar sus datos." wrapText="true" styleClass="mensaje"/>
+    </children>
+</VBox>
