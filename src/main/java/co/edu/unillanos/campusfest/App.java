@@ -13,7 +13,6 @@ import co.edu.unillanos.campusfest.application.usecase.ConsultarCupos;
 import co.edu.unillanos.campusfest.application.usecase.EditarEvento;
 import co.edu.unillanos.campusfest.application.usecase.RegistrarIngreso;
 import co.edu.unillanos.campusfest.application.usecase.ReservarEntrada;
-import co.edu.unillanos.campusfest.domain.Evento;
 import co.edu.unillanos.campusfest.infrastructure.persistence.RepositorioEventosH2;
 import co.edu.unillanos.campusfest.infrastructure.reloj.RelojDelSistema;
 import co.edu.unillanos.campusfest.infrastructure.ui.PantallaCuposController;
@@ -43,7 +42,7 @@ public class App extends Application {
         conexion = DriverManager.getConnection("jdbc:h2:file:./datos/campusfest", "sa", "");
         RepositorioEventos repositorio = new RepositorioEventosH2(conexion);
         Reloj reloj = new RelojDelSistema();
-        crearEventosDeMuestraSiNoExisten(repositorio, reloj);
+        DatosDeMuestra.cargarSiNoExisten(repositorio, reloj);
 
         ConsultarCupos consultarCupos = new ConsultarCupos(repositorio, reloj);
         ReservarEntrada reservarEntrada = new ReservarEntrada(repositorio, reloj);
@@ -55,12 +54,12 @@ public class App extends Application {
         PantallaEventoController pantallaEvento = new PantallaEventoController(editarEvento);
         PantallaIngresoController pantallaIngreso = new PantallaIngresoController(registrarIngreso);
 
-        TabPane pestañas = new TabPane();
-        pestañas.getTabs().add(crearPestaña("01  Cupos", "pantalla-cupos.fxml", pantallaCupos));
-        pestañas.getTabs().add(crearPestaña("02  Reservas", "pantalla-reserva.fxml", pantallaReserva));
-        pestañas.getTabs().add(crearPestaña("03  Eventos", "pantalla-evento.fxml", pantallaEvento));
-        pestañas.getTabs().add(crearPestaña("04  Ingresos", "pantalla-ingreso.fxml", pantallaIngreso));
-        pestañas.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+        TabPane pestanas = new TabPane();
+        pestanas.getTabs().add(crearPestana("01  Cupos", "pantalla-cupos.fxml", pantallaCupos));
+        pestanas.getTabs().add(crearPestana("02  Reservas", "pantalla-reserva.fxml", pantallaReserva));
+        pestanas.getTabs().add(crearPestana("03  Eventos", "pantalla-evento.fxml", pantallaEvento));
+        pestanas.getTabs().add(crearPestana("04  Ingresos", "pantalla-ingreso.fxml", pantallaIngreso));
+        pestanas.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         Label marca = new Label("CAMPUSFEST  /  UNILLANOS");
         marca.getStyleClass().add("marca");
@@ -70,7 +69,7 @@ public class App extends Application {
         cabecera.getStyleClass().add("cabecera");
         BorderPane raiz = new BorderPane();
         raiz.setTop(cabecera);
-        raiz.setCenter(pestañas);
+        raiz.setCenter(pestanas);
 
         Scene escena = new Scene(raiz, 970, 665);
         escena.getStylesheets().add(getClass().getResource(VISTAS + "estilos.css").toExternalForm());
@@ -81,22 +80,11 @@ public class App extends Application {
         escenario.show();
     }
 
-    private Tab crearPestaña(String nombre, String archivo, Object controlador) throws IOException {
+    private Tab crearPestana(String nombre, String archivo, Object controlador) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(VISTAS + archivo));
         loader.setController(controlador);
         Parent contenido = loader.load();
         return new Tab(nombre, contenido);
-    }
-
-    private void crearEventosDeMuestraSiNoExisten(RepositorioEventos repositorio, Reloj reloj) {
-        if (repositorio.buscar("ev-1") == null) {
-            repositorio.guardar(new Evento("ev-1", "Festival de bienvenida",
-                    reloj.ahora().plusDays(7), "Auditorio principal", 120, 5));
-        }
-        if (repositorio.buscar("ev-2") == null) {
-            repositorio.guardar(new Evento("ev-2", "Feria de emprendimiento",
-                    reloj.ahora().plusDays(10), "Plazoleta central", 60, 3));
-        }
     }
 
     @Override
