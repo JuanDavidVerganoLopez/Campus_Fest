@@ -69,6 +69,17 @@ public class Evento {
         throw new IllegalArgumentException("El código no corresponde a una reserva de este evento");
     }
 
+    /** El agregado confirma sus propias reservas: los casos de uso no manipulan la Reserva. */
+    public Reserva confirmarReserva(String codigo, LocalDateTime ahora) {
+        Reserva reserva = buscarReservaPorCodigo(codigo);
+        reserva.confirmar(ahora);
+        return reserva;
+    }
+
+    public Asistencia registrarIngreso(String codigo, LocalDateTime ahora) {
+        return buscarReservaPorCodigo(codigo).registrarIngreso(ahora);
+    }
+
     public void cambiarDatos(String nombre, LocalDateTime fecha, String lugar) {
         validarDatos(nombre, fecha, lugar);
         this.nombre = nombre;
@@ -98,7 +109,9 @@ public class Evento {
 
     private static void validarDatos(String nombre, LocalDateTime fecha, String lugar) {
         validarTexto(nombre, "El nombre del evento es obligatorio");
-        Objects.requireNonNull(fecha, "La fecha del evento es obligatoria");
+        if (fecha == null) {
+            throw new IllegalArgumentException("La fecha del evento es obligatoria");
+        }
         validarTexto(lugar, "El lugar del evento es obligatorio");
     }
 
