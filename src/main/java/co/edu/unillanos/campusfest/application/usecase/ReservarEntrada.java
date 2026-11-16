@@ -16,25 +16,16 @@ public class ReservarEntrada {
     }
 
     public Reserva solicitarReserva(String eventoId, String estudianteId) {
-        Evento evento = obtenerEvento(eventoId);
+        Evento evento = repositorio.obtener(eventoId);
         Reserva reserva = evento.reservar(estudianteId, reloj.ahora());
         repositorio.guardar(evento);
         return reserva;
     }
 
     public Reserva confirmarReserva(String eventoId, String codigoReserva) {
-        Evento evento = obtenerEvento(eventoId);
-        Reserva reserva = evento.buscarReservaPorCodigo(codigoReserva);
-        reserva.confirmar(reloj.ahora());
+        Evento evento = repositorio.obtener(eventoId);
+        Reserva reserva = evento.confirmarReserva(codigoReserva, reloj.ahora());
         repositorio.guardar(evento);
         return reserva;
-    }
-
-    private Evento obtenerEvento(String eventoId) {
-        Evento evento = repositorio.buscar(eventoId);
-        if (evento == null) {
-            throw new IllegalArgumentException("No existe el evento: " + eventoId);
-        }
-        return evento;
     }
 }

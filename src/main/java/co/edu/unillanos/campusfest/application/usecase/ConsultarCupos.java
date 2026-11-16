@@ -15,10 +15,7 @@ public class ConsultarCupos {
     }
 
     public int consultar(String eventoId) {
-        Evento evento = repositorio.buscar(eventoId);
-        if (evento == null) {
-            throw new IllegalArgumentException("No existe el evento: " + eventoId);
-        }
+        Evento evento = repositorio.obtener(eventoId);
         return evento.cuposDisponibles(reloj.ahora());
     }
 }
