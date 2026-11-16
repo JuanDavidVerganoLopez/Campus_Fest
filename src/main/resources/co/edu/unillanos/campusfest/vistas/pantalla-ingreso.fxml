@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="18" styleClass="contenido" fillWidth="true">
+    <children>
+        <Label text="Registrar ingreso con código QR" styleClass="titulo"/>
+        <Label text="El lector entrega el texto del QR. Solo una reserva confirmada puede ingresar y cada reserva se registra una sola vez." wrapText="true" styleClass="explicacion"/>
+        <VBox spacing="7"><children>
+            <Label text="ID del evento" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoEventoId" text="ev-1"/>
+        </children></VBox>
+        <VBox spacing="7"><children>
+            <Label text="Código leído del QR" styleClass="campo-etiqueta"/>
+            <TextField fx:id="campoCodigo" promptText="Pega aquí el código de la entrada"/>
+        </children></VBox>
+        <Button text="Registrar ingreso" onAction="#registrarIngreso" styleClass="boton-principal"/>
+        <Label fx:id="etiquetaMensaje" text="Solo se permite un ingreso por reserva confirmada." wrapText="true" styleClass="mensaje"/>
+    </children>
+</VBox>

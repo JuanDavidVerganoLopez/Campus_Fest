@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="18" styleClass="contenido" fillWidth="true">
+    <children>
+        <Label text="Disponibilidad de cupos" styleClass="titulo"/>
+        <Label text="Consulta las entradas disponibles de un evento, considerando reservas vigentes y cupos bloqueados." wrapText="true" styleClass="explicacion"/>
+        <VBox spacing="7">
+            <children>
+                <Label text="ID del evento" styleClass="campo-etiqueta"/>
+                <TextField fx:id="campoEventoId" text="ev-1" promptText="Ejemplo: ev-1"/>
+            </children>
+        </VBox>
+        <Button text="Consultar disponibilidad" onAction="#consultar" styleClass="boton-principal"/>
+        <Label fx:id="etiquetaMensaje" text="Eventos de muestra: ev-1 y ev-2" wrapText="true" styleClass="mensaje"/>
+    </children>
+</VBox>
