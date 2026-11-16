@@ -78,7 +78,7 @@ public class RepositorioEventosH2 implements RepositorioEventos {
     private List<Reserva> buscarReservas(String eventoId) throws SQLException {
         String sql = "SELECT R.CODIGO, R.ESTUDIANTE_ID, R.VENCE_EN, R.ESTADO, A.HORA "
                 + "FROM RESERVA R LEFT JOIN ASISTENCIA A ON A.CODIGO_RESERVA = R.CODIGO "
-                + "WHERE R.EVENTO_ID = ? ORDER BY R.CODIGO";
+                + "WHERE R.EVENTO_ID = ? ORDER BY R.VENCE_EN, R.CODIGO";
         List<Reserva> reservas = new ArrayList<>();
         try (PreparedStatement consulta = conexion.prepareStatement(sql)) {
             consulta.setString(1, eventoId);
