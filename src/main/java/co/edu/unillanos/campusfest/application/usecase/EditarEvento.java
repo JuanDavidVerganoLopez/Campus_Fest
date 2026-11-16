@@ -16,11 +16,7 @@ public class EditarEvento {
     }
 
     public Evento obtener(String eventoId) {
-        Evento evento = repositorio.buscar(eventoId);
-        if (evento == null) {
-            throw new IllegalArgumentException("No existe el evento: " + eventoId);
-        }
-        return evento;
+        return repositorio.obtener(eventoId);
     }
 
     public void editar(String eventoId, String nombre, LocalDateTime fecha,
