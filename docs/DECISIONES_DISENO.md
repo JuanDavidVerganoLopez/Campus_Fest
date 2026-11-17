@@ -1,4 +1,4 @@
-# Decisiones de diseño y revisión de propuestas de IA
+\# Decisiones de diseño y revisión de propuestas de IA
 
 ## Regla de aforo
 
@@ -8,7 +8,7 @@
 
 **Decisión implementada:** `Evento.cambiarAforo(nuevoAforo, ahora)` delega internamente en `cuposOcupadosPorReservas`, y `Reserva.ocupaCupo(ahora)` es la única responsable de decidir si una reserva ocupa plaza. El método `Evento.actualizar` valida los datos antes de ejecutar cambios; `EditarEvento.editar` delega, después guarda una sola vez.
 
-**Evidencia real en Git:** pendiente de que un integrante revise el diseño, realice una mejora/corrección propia y vincule aquí el enlace a su PR o commit. No inventar historial.
+**Evidencia real en Git:** los commits de corrección que cada integrante subió sobre el aporte de un compañero están enlazados en la tabla de la sección «Declaración de uso de inteligencia artificial» del `README.md`.
 
 ## QR como String
 

@@ -73,9 +73,10 @@ El adaptador `RepositorioEventosH2` recibe una conexión JDBC abierta, ejecuta u
 
 ## Pruebas y limitaciones conocidas
 
-**El archivo `.7z` efectivamente adjuntado contenía 60 métodos `@Test` en 8 clases, y 2 dobles auxiliares.** Las 10 clases Java se copiaron a `src/test/java` sin cambiar su contenido. El contrato **más reciente** enumera 90 pruebas en 10 clases de test: aún faltan del material entregado `RepositorioEventosH2Test.java` (16) y `PantallasTest.java` (14), que deben obtenerse de la docente e integrarse **sin modificar**. No se inventaron estas dos clases ni se presentaron como originales.
+`src/test/java` contiene las **90 pruebas de la docente** (10 clases de prueba y 2 dobles auxiliares), copiadas **sin modificar** del material entregado (`4. campusfest-PRUEBAS-para-estudiantes.zip`), más **8 pruebas propias** en `RevisionDisenoTest` (5) y `RepositorioEventosEnMemoriaAislamientoTest` (3): **98 métodos `@Test`** en total. Las dos clases que llegaron después, `RepositorioEventosH2Test` (16) y `PantallasTest` (14), se añadieron sin tocar su contenido; la primera entrega traía 60 pruebas en 8 clases.
 
-Se compilaron los archivos Java del dominio, los casos de uso y los adaptadores no JavaFX con **JDK 21** y se verificaron 60/60 métodos suministrados mediante un ejecutor temporal de aserciones, sin modificar los test. 
+Resultado esperado de `mvn clean test`: **98 pruebas en verde**. [INFO] Tests run: 98, Failures: 0, Errors: 0, Skipped: 0
+
 
 ## Declaración de uso de inteligencia artificial (rúbrica 8)
 
